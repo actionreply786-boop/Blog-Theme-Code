@@ -1,6 +1,5 @@
-// GitHub File: ads.js
 (function() {
-    // 1. CSS Design (Style) inject karna
+    // 1. CSS Design ko inject karna
     const style = document.createElement('style');
     style.innerHTML = `
         #p-container { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); justify-content: center; align-items: center; z-index: 999999; cursor: pointer; }
@@ -12,13 +11,13 @@
     `;
     document.head.appendChild(style);
 
-    // 2. HTML Structure (Box) inject karna
+    // 2. HTML Structure ko inject karna
     const htmlMarkup = `
         <div id='p-container'>
           <div class='p-box' onclick='event.stopPropagation()'>
             <div id='p-counter'>Closing in 8s</div>
             <div class='p-loader'></div>
-            <div id='p-click-area'> 
+            <div id='p-click-area' style='cursor:pointer;'> 
                <iframe id='p-iframe' src=''></iframe>
             </div>
             <p style='font-size: 11px; color: #888; margin-top: 10px; font-family: sans-serif;'>
@@ -29,16 +28,16 @@
     `;
     document.body.insertAdjacentHTML('beforeend', htmlMarkup);
 
-    // 3. Ad Links aur Logic
+    // 3. Aapke Saare Links
     const adLinks = [
         "https://monstroustouchy.com/bzx7biqa?key=1be2fc2f6fb71d057c094d72346a5d39",    
         "https://monstroustouchy.com/m80mq0qyys?key=030b0691e4c23dd44daab1d83bed3add",    
-        "https://monstroustouchy.com/nkjv3nm11g?key=f84823385e13ee452de529a3989064be", 
-        "https://omg10.com/4/9452527", 
+        "https://monstroustouchy.com/nkjv3nm11g?key=f84823385e13ee452de529a3989064be",  
+        "https://omg10.com/4/9452527",  
         "https://rectangulartelevision.com/yE6ZrX",      
-        "https://monstroustouchy.com/a1avhnxv?key=35be8ef3b0864ef8baa58c0678a29ec1", 
-        "https://monstroustouchy.com/urfp2x8g9?key=206f83540292bb7e63f7fa0e906f57cc",     
-        "https://monstroustouchy.com/sgsxe47e5d?key=1a39caf117aab80f3a303b7565294193", 
+        "https://monstroustouchy.com/a1avhnxv?key=35be8ef3b0864ef8baa58c0678a29ec1",  
+        "https://monstroustouchy.com/urfp2x8g9?key=206f83540292bb7e63f7fa0e906f57cc",      
+        "https://monstroustouchy.com/sgsxe47e5d?key=1a39caf117aab80f3a303b7565294193",  
         "https://omg10.com/4/9452687",
         "https://monstroustouchy.com/m80mq0qyys?key=030b0691e4c23dd44daab1d83bed3add",
         "https://monstroustouchy.com/mqf5dubr?key=8c36617d47f4702a6c9e727b6272cba7",
@@ -51,16 +50,13 @@
     const container = document.getElementById('p-container');
     const iframe = document.getElementById('p-iframe');
     const counterDisp = document.getElementById('p-counter');
-    const clickArea = document.getElementById('p-click-area');
 
     window.openHybridTab = function() {
         window.open(adLinks[index], '_blank');
         closePopup();
     };
 
-    // Click events set karna
     container.onclick = window.openHybridTab;
-    clickArea.onclick = window.openHybridTab;
 
     function closePopup() {
         container.style.display = 'none';
@@ -84,7 +80,7 @@
         }, 1000);
     }
 
-    // Timers
+    // Pehla ad 4s baad, phir har 35s baad
     setTimeout(startAdCycle, 4000);
-    setInterval(startAdCycle, 35000); // 35 second rotation
+    setInterval(startAdCycle, 30000); 
 })();
